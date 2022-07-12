@@ -30,15 +30,16 @@ public class TimerMain extends JFrame {
 
     public TimerMain() {
         add(panel1);
+        this.setSize(550, 200);
         setTitle("Kapatma Zamanlayıcısı");
         c = this.getContentPane();
-        this.setSize(550, 200);
 
 
         //Icon area
         this.setLocation(Helper.ScreenC("x", getSize()), Helper.ScreenC("y", getSize()));
         icon = new ImageIcon("src/Image/icon.png");
         setIconImage(icon.getImage());
+
 
         PromptSupport.setPrompt("Saniye cinsinden süreyi giriniz.", textField1);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -66,23 +67,10 @@ public class TimerMain extends JFrame {
 
             }
         });
-        btn30Sec.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainFunc.close(btn30Sec);
-            }
-        });
-        btn60Sec.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainFunc.close(btn60Sec);
-            }
-        });
-        btn180Sec.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainFunc.close(btn180Sec);
-            }
-        });
+        btn30Sec.addActionListener(e -> MainFunc.close(btn30Sec));
+        btn60Sec.addActionListener(e -> MainFunc.close(btn60Sec));
+        btn180Sec.addActionListener(e -> MainFunc.close(btn180Sec));
+
+        this.setVisible(true);
     }
 }

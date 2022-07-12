@@ -7,14 +7,12 @@ public class Open {
 
         Helper.setLayout();
 
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
+        SwingUtilities.invokeLater(() -> {
 
-                TimerMain f1 = new TimerMain();
-                f1.setVisible(true);
+            TimerMain f1 = new TimerMain();
+            f1.setVisible(true);
 
-            }
+
         });
 
 
