@@ -1,3 +1,8 @@
+import Core.MainFunc;
+import Helper.Helper;
+import org.jdesktop.swingx.JXTextField;
+import org.jdesktop.swingx.prompt.PromptSupport;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 public class TimerMain extends JFrame {
 
 
@@ -13,44 +19,36 @@ public class TimerMain extends JFrame {
     private JButton başlatButton;
     private JPanel panel1;
     private JButton DURDURButton;
+    private JButton btn30Sec;
+    private JButton btn60Sec;
+    private JButton btn180Sec;
 
     private int EkranX, EkranY;
     Toolkit kit = Toolkit.getDefaultToolkit();
     Container c;
+    ImageIcon icon;
 
     public TimerMain() {
         add(panel1);
         setTitle("Kapatma Zamanlayıcısı");
         c = this.getContentPane();
-        EkranX = (int) kit.getScreenSize().width; //Ekran boyutunun genişliğini alıyoruz...
-        EkranY = (int) kit.getScreenSize().height;//Ekran boyutunun yüksekliğini alıyoruz...
-        this.setSize(400, 200); // Pencere boyutunu belirliyoruz...
-        this.setLocation((EkranX - 600) / 2, (EkranY - 470) / 2); // Pencerenin ekranın tam ortasında açılması için pencere yüksekliği ve genişliğinin yarısı kadar geri çekme işlemi uyguluyoruz...
+        this.setSize(550, 200);
 
+
+        //Icon area
+        this.setLocation(Helper.ScreenC("x", getSize()), Helper.ScreenC("y", getSize()));
+        icon = new ImageIcon("src/Image/icon.png");
+        setIconImage(icon.getImage());
+
+        PromptSupport.setPrompt("Saniye cinsinden süreyi giriniz.", textField1);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 
         başlatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String timeS = textField1.getText();
-                int time;
-                try {
-                    time = Integer.parseInt(timeS);
-                } catch (NumberFormatException exx) {
-                    time = 120;
-                    JOptionPane.showMessageDialog(null, "Yanlış veri girdisi, bilgisayar 120 saniye sonra kapatılacak...");
-                }
-                JOptionPane.showMessageDialog(null, "Geri sayım başlatıldı " + time);
-
-                try {
-                    Process p = Runtime.getRuntime().exec("shutdown -s -t " + time);
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(p.getInputStream()));
-
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                MainFunc.close(textField1);
             }
         });
         DURDURButton.addActionListener(new ActionListener() {
@@ -58,7 +56,7 @@ public class TimerMain extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Process p = Runtime.getRuntime().exec("shutdown /a ");
-                    JOptionPane.showMessageDialog(null, "ZAMANLAYICI DURDURULDU.");
+                    JOptionPane.showMessageDialog(null, "Zamanlayıcı Durduruldu!", "Uyarı", JOptionPane.PLAIN_MESSAGE);
                     BufferedReader in = new BufferedReader(
                             new InputStreamReader(p.getInputStream()));
 
@@ -66,6 +64,24 @@ public class TimerMain extends JFrame {
                     ex.printStackTrace();
                 }
 
+            }
+        });
+        btn30Sec.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainFunc.close(btn30Sec);
+            }
+        });
+        btn60Sec.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainFunc.close(btn60Sec);
+            }
+        });
+        btn180Sec.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainFunc.close(btn180Sec);
             }
         });
     }
