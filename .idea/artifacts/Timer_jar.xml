@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Timer_jar</output-path>
     <root id="archive" name="Timer.jar">
       <element id="module-output" name="Timer" />
-      <element id="extracted-dir" path="$USER_HOME$/Downloads/flatlaf-2.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Downloads/swingx-1.6.1.jar" path-in-jar="/" />
     </root>
   </artifact>

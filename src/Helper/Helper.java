@@ -1,9 +1,6 @@
 package Helper;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.FlatLightLaf;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +25,7 @@ public class Helper {
     public static void setLayout() {
 
         try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
         }

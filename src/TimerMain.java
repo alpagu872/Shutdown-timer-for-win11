@@ -1,6 +1,6 @@
 import Core.MainFunc;
 import Helper.Helper;
-import org.jdesktop.swingx.JXTextField;
+
 import org.jdesktop.swingx.prompt.PromptSupport;
 
 import javax.swing.*;
@@ -23,12 +23,12 @@ public class TimerMain extends JFrame {
     private JButton btn60Sec;
     private JButton btn180Sec;
 
-    private int EkranX, EkranY;
-    Toolkit kit = Toolkit.getDefaultToolkit();
     Container c;
     ImageIcon icon;
 
     public TimerMain() {
+
+
         add(panel1);
         this.setSize(550, 200);
         setTitle("Kapatma Zamanlayıcısı");
@@ -73,4 +73,6 @@ public class TimerMain extends JFrame {
 
         this.setVisible(true);
     }
+
+
 }
