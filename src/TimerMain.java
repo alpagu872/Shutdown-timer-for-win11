@@ -1,6 +1,5 @@
 import Core.MainFunc;
 import Helper.Helper;
-
 import org.jdesktop.swingx.prompt.PromptSupport;
 
 import javax.swing.*;
@@ -45,27 +44,19 @@ public class TimerMain extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
-        başlatButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        başlatButton.addActionListener(e -> MainFunc.close(textField1));
 
-                MainFunc.close(textField1);
+        DURDURButton.addActionListener(e -> {
+            try {
+                Process p = Runtime.getRuntime().exec("shutdown /a ");
+                JOptionPane.showMessageDialog(null, "Zamanlayıcı Durduruldu!", "Uyarı", JOptionPane.PLAIN_MESSAGE);
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(p.getInputStream()));
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-        });
-        DURDURButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Process p = Runtime.getRuntime().exec("shutdown /a ");
-                    JOptionPane.showMessageDialog(null, "Zamanlayıcı Durduruldu!", "Uyarı", JOptionPane.PLAIN_MESSAGE);
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(p.getInputStream()));
 
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-
-            }
         });
         btn30Sec.addActionListener(e -> MainFunc.close(btn30Sec));
         btn60Sec.addActionListener(e -> MainFunc.close(btn60Sec));
